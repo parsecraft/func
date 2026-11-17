@@ -1,0 +1,26 @@
+[package]
+name = "func"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Write, test and run Rust scripts on the fly, without project boilerplate"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/parsecraft/func"
+homepage = "https://github.com/parsecraft/func"
+documentation = "https://github.com/parsecraft/func/blob/main/docs/DESIGN.md"
+keywords = ["cli", "rust", "script", "scripting"]
+categories = ["command-line-utilities", "development-tools"]
+exclude = [".github/", "docs/"]
+# examples/ holds func scripts (one needs a crate), not Cargo examples.
+autoexamples = false
+
+# No dependencies, on purpose: fast builds, fast startup, nothing to audit.
+[dependencies]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
