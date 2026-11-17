@@ -112,9 +112,9 @@ _func() {{
     esac
 
     # After a script name the arguments are the script's: use normal file completion.
-    if (( positional > 0 )) && [[ $cmd == @(run|r|test|t) ]]; then
-        type compopt &>/dev/null && compopt -o default
-    fi
+    case $cmd in
+        run|r|test|t) (( positional > 0 )) && type compopt &>/dev/null && compopt -o default ;;
+    esac
 }}
 
 complete -F _func func
@@ -380,6 +380,18 @@ mod tests {
     fn targets_pick_the_right_commands() {
         let with_files: Vec<_> = commands_with(|t| t == Target::ScriptOrFile).map(|s| s.name).collect();
         assert_eq!(with_files, ["run", "test", "check", "install"]);
+    }
+
+    /// macOS still ships bash 3.2. Extended globs like `@(a|b)` are a syntax error there
+    /// unless `extglob` is on, and newer-bash features simply do not exist.
+    #[test]
+    fn bash_completion_sticks_to_bash_3_syntax() {
+        let bash = generate(Shell::Bash);
+        for banned in
+            ["@(", "+(", "?(", "*(", "!(", "mapfile", "readarray", "declare -A", "local -n", ",,}", "^^}"]
+        {
+            assert!(!bash.contains(banned), "bash 3.2 cannot parse `{banned}`");
+        }
     }
 
     #[test]

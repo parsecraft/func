@@ -7,7 +7,6 @@ description = "Write, test and run Rust scripts on the fly, without project boil
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/parsecraft/func"
-homepage = "https://github.com/parsecraft/func"
 documentation = "https://github.com/parsecraft/func/blob/main/docs/DESIGN.md"
 keywords = ["cli", "rust", "script", "scripting"]
 categories = ["command-line-utilities", "development-tools"]

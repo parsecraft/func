@@ -62,9 +62,9 @@ _func() {
     esac
 
     # After a script name the arguments are the script's: use normal file completion.
-    if (( positional > 0 )) && [[ $cmd == @(run|r|test|t) ]]; then
-        type compopt &>/dev/null && compopt -o default
-    fi
+    case $cmd in
+        run|r|test|t) (( positional > 0 )) && type compopt &>/dev/null && compopt -o default ;;
+    esac
 }
 
 complete -F _func func

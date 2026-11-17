@@ -5,6 +5,8 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ## [Unreleased]
 
 ### Fixed
+- Bash completion was a syntax error on macOS's default bash 3.2 (it used an extended glob). It now sticks to bash 3.2 syntax, and a test keeps it that way.
+- `install.sh` passes ShellCheck.
 - Tab after `func run` (and `test`, `check`, `install`) listed every file and folder in the current directory. It now offers saved scripts and `.rs` files, plus folders once you type a path. After the script name, normal file completion applies, since those arguments belong to the script.
 
 ## [0.1.0]

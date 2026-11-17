@@ -278,7 +278,7 @@ fn bash_completes_in(sandbox: &Sandbox, cwd: &Path, words: &[&str]) -> Vec<Strin
     let path = format!("{}:{}", exe.parent().unwrap().display(), std::env::var("PATH").unwrap_or_default());
     let quoted: Vec<String> = words.iter().map(|w| format!("'{w}'")).collect();
     let program = format!(
-        "source <(func completions bash); COMP_WORDS=({}); COMP_CWORD=$(( ${{#COMP_WORDS[@]}} - 1 )); _func; printf '%s\\n' \"${{COMPREPLY[@]}}\"",
+        "eval \"$(func completions bash)\"; COMP_WORDS=({}); COMP_CWORD=$(( ${{#COMP_WORDS[@]}} - 1 )); _func; printf '%s\\n' \"${{COMPREPLY[@]}}\"",
         quoted.join(" ")
     );
     let out = Command::new("bash")
