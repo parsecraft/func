@@ -12,7 +12,7 @@ build: ## Build an optimized binary into target/release
 test: ## Run unit and end-to-end tests
 	cargo test
 
-lint: ## Check formatting and run clippy (what CI runs)
+lint: ## Check formatting and run clippy
 	cargo fmt --check
 	cargo clippy --all-targets -- -D warnings
 

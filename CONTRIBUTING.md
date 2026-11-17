@@ -20,7 +20,7 @@ make lint        # cargo fmt --check, cargo clippy -D warnings
 1. Read [docs/DESIGN.md](docs/DESIGN.md). It is short, and it explains where things go.
 2. Add a test with the change: a unit test beside the code, and an end-to-end test in `tests/cli.rs` if behavior a person can see changed.
 3. If you changed a command or flag, run `make completions`. A test fails until the committed completion files match.
-4. Run `make lint test`. CI runs the same.
+4. Run `make lint test` and make sure both pass.
 5. Update `CHANGELOG.md` under `[Unreleased]`, and the README if usage changed.
 
 ## What a good change looks like

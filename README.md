@@ -1,6 +1,5 @@
 # func
 
-[![CI](https://github.com/parsecraft/func/actions/workflows/ci.yml/badge.svg)](https://github.com/parsecraft/func/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Write, test and run Rust scripts on the fly. No project, no `Cargo.toml`, no copies of your code.
@@ -195,7 +194,7 @@ Almost none, on purpose.
 
 ```sh
 make test         # unit tests, plus end-to-end tests that run the real binary
-make lint         # cargo fmt --check and clippy, exactly what CI runs
+make lint         # cargo fmt --check and clippy
 make help         # every task
 ```
 
